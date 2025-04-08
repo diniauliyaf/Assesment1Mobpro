@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assesment1Mobpro</string>
+    <string name="app_intro">Ever been confused about how to calculator power, energy, or time??? This application can help you calculate power, energy, or time.\nLets try it now!</string>
+    <string name="gambar_awal">This is a picture of the power, energy, and time formulas</string>
 </resources>

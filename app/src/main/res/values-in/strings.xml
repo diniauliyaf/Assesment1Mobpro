@@ -3,4 +3,8 @@
     <string name="app_name">Assesment1Mobpro</string>
     <string name="app_intro">Pernah bingung cara hitung daya, energi, atau waktu??? Aplikasi ini dapat bantu kalian untuk menghitung daya, energi, atau waktu.\nAyo coba sekarang!</string>
     <string name="gambar_awal">Ini gambar rumus daya, energi, dan waktu</string>
+    <string name="hitung_daya">Menghitung Daya</string>
+    <string name="hitung_energi">Menghitung Energi</string>
+    <string name="hitung_waktu">Menghitung Waktu</string>
+    <string name="pilih_rumus">Pilih jenis hitung</string>
 </resources>

@@ -7,4 +7,10 @@
     <string name="hitung_energi">Menghitung Energi</string>
     <string name="hitung_waktu">Menghitung Waktu</string>
     <string name="pilih_rumus">Pilih jenis hitung</string>
+    <string name="daya">Daya</string>
+    <string name="energi">Energi</string>
+    <string name="waktu">Waktu</string>
+    <string name="satuan_daya">Watt</string>
+    <string name="satuan_energi">Joule</string>
+    <string name="satuan_waktu">Detik</string>
 </resources>

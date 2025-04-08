@@ -13,4 +13,5 @@
     <string name="satuan_daya">Watt</string>
     <string name="satuan_energi">Joule</string>
     <string name="satuan_waktu">Detik</string>
+    <string name="hitung">Hitung</string>
 </resources>

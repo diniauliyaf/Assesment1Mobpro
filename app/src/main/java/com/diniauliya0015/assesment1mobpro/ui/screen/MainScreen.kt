@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -84,7 +86,7 @@ fun ScreenContent(modifier: Modifier = Modifier){
         Image(
             painter = gambarAwal,
             contentDescription = stringResource(R.string.gambar_awal),
-            modifier = modifier
+            modifier = Modifier
                 .size(230.dp)
                 .align(Alignment.CenterHorizontally)
         )
@@ -93,6 +95,7 @@ fun ScreenContent(modifier: Modifier = Modifier){
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(bottom = 15.dp)
         )
         Column (
             modifier = Modifier
@@ -263,6 +266,13 @@ fun ScreenContent(modifier: Modifier = Modifier){
                         )
                     }
                 }
+            }
+            Button(
+                onClick = {},
+                modifier = Modifier.padding(top = 8.dp),
+                contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+            ) {
+                Text(text = stringResource(R.string.hitung))
             }
 
         }

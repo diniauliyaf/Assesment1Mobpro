@@ -28,4 +28,12 @@
     \n\nThis application was created to fulfill the task of Assesment 1 class of Programing for Mobile Devices
     \n\nCopyright © 2025 - 2026 Dini Auliya Fauziah
     \nAll rights reserved</string>
+    <string name="rumus">Formula Info</string>
+    <string name="deskripsi_rumus">Here are the formulas used by this application to calculate Power, Energy, and Time.
+    \n1. Power Formula
+    \nEnergy(Joule) / Time(Second)
+    \n\n2. Energy Formula
+    \nPower(Watt) * Time(Second)
+    \n\n3. Time Formula
+    \nEnergy(Joule) / Time(Second)</string>
 </resources>

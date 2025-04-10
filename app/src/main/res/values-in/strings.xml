@@ -29,4 +29,12 @@
     \n\n Aplikasi ini dibuat untuk memenuhi tugas Assesment 1 kelas Pemrograman untuk Perangkat Bergerak
     \n\nCopyright © 2025 - 2026 Dini Auliya Fauziah
     \nAll rights reserved</string>
+    <string name="rumus">Info Rumus</string>
+    <string name="deskripsi_rumus">Berikut rumus yang digunakan aplikasi ini untuk menghitung Daya, Energi, dan Waktu.
+    \n1. Rumus Daya
+    \nEnergi(Joule) / Waktu(Detik)
+    \n\n2. Rumus Energi
+    \nDaya(Watt) * Waktu(Detik)
+    \n\n3. Rumus Waktu
+    \nEnergi(Joule) / Waktu(Detik)</string>
 </resources>

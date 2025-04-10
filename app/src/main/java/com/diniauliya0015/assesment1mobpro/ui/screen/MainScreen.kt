@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,12 +14,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -30,6 +30,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -44,7 +45,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -54,6 +54,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.diniauliya0015.assesment1mobpro.R
@@ -63,7 +64,6 @@ import com.diniauliya0015.assesment1mobpro.ui.theme.Assesment1MobproTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavHostController){
-    val showMenu = remember { mutableStateOf(false) }
     Scaffold (
         topBar = {
             TopAppBar(
@@ -75,48 +75,11 @@ fun MainScreen(navController: NavHostController){
                     titleContentColor = MaterialTheme.colorScheme.primary
                 ),
                 actions = {
-                    IconButton(onClick = { showMenu.value = true }) {
-                        Icon(
-                            imageVector = Icons.Default.MoreVert,
-                            contentDescription = stringResource(R.string.menu_overflow)
-                        )
-                    }
-                }
-            )
-            if (showMenu.value){
-                Column (
-                    horizontalAlignment = Alignment.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 10.dp, start = 170.dp, end = 10.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(MaterialTheme.colorScheme.surface)
-                ){
-                    Box(
-                        modifier = Modifier
-                            .size(height = 50.dp, width = 200.dp)
-                            .clickable {
-                                showMenu.value = false
-                                navController.navigate(Screen.About.route) }
-                            .padding(15.dp)
-                    ){
-                        Text(
-                            text = stringResource(R.string.tentang_aplikasi),
-                            color = MaterialTheme.colorScheme.onSurface)
-                    }
-                    Box(
-                        modifier = Modifier
-                            .size(height = 50.dp, width = 200.dp)
-                            .clickable {
-                                showMenu.value = false
-                                navController.navigate(Screen.Rumus.route) }
-                            .padding(15.dp)
-                    ){
-                        Text(text = stringResource(R.string.rumus))
-                    }
-                }
-            }
+                    OverflowMenu(navController)
+
         }
+    )
+}
     ){ innerPadding->
         ScreenContent(Modifier.padding(innerPadding))
     }
@@ -181,7 +144,7 @@ fun ScreenContent(modifier: Modifier = Modifier){
                 TextField(
                     modifier = Modifier
                         .width(220.dp)
-                        .menuAnchor(),
+                        .menuAnchor(MenuAnchorType.PrimaryNotEditable),
                     value = selectedText,
                     onValueChange = {},
                     readOnly = true,
@@ -474,6 +437,54 @@ private fun shareData(context: Context, message: String) {
     }
 }
 
+@Composable
+fun OverflowMenu(navController: NavController) {
+    var expanded by remember { mutableStateOf(false) }
+    Box(
+        modifier = Modifier
+            .padding(10.dp)
+    ){
+        IconButton(onClick = {expanded = !expanded}) {
+            Icon(
+                Icons.Default.MoreVert,
+                contentDescription = stringResource(R.string.menu_overflow))
+        }
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false}
+        ) {
+            DropdownMenuItem(
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Info,
+                        contentDescription = stringResource(R.string.tentang_aplikasi),
+                        tint = MaterialTheme.colorScheme.primary
+                    ) },
+                text = {Text(text = stringResource(R.string.tentang_aplikasi))},
+                onClick = {
+                    expanded = false
+                    navController.navigate(Screen.About.route)
+                }
+            )
+            DropdownMenuItem(
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Done,
+                        modifier = Modifier.size(22.dp),
+                        contentDescription = stringResource(R.string.rumus),
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                },
+                text = {Text(text = stringResource(R.string.rumus))},
+                onClick = {
+                    expanded = false
+                    navController.navigate(Screen.Rumus.route)
+                }
+            )
+
+        }
+    }
+}
 @Composable
 fun IconPicker(isError: Boolean, unit:String) {
     if (isError){

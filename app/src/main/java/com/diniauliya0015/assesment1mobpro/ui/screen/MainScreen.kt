@@ -12,11 +12,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -26,6 +30,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -74,8 +79,18 @@ fun ScreenContent(modifier: Modifier = Modifier){
     var selectedText by remember { mutableStateOf(list[0]) }
     var isExpanded by remember { mutableStateOf(false) }
     var daya by remember { mutableStateOf("") }
+    var dayaError by remember { mutableStateOf(false) }
     var energi by remember { mutableStateOf("") }
+    var energiError by remember { mutableStateOf(false) }
     var waktu by remember { mutableStateOf("") }
+    var waktuError by remember { mutableStateOf(false) }
+    var hitungDaya by remember { mutableFloatStateOf(0f) }
+    var hitungEnergi by remember { mutableFloatStateOf(0f) }
+    var hitungWaktu by remember { mutableFloatStateOf(0f) }
+    val hitungDayaText = stringResource(R.string.hitung_daya)
+    val hitungEnergiText = stringResource(R.string.hitung_energi)
+    val hitungWaktuText = stringResource(R.string.hitung_waktu)
+
     Column (
         modifier = modifier
             .fillMaxSize()
@@ -147,12 +162,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             value = energi,
                             onValueChange = { energi = it },
                             label = { Text(text = stringResource(R.string.energi)) },
-                            trailingIcon = {
-                                Text(
-                                    text = stringResource(R.string.satuan_energi),
-                                    fontSize = 12.sp
-                                )
-                            },
+                            trailingIcon = { IconPicker(energiError, stringResource(R.string.satuan_energi)) },
+                            supportingText = { ErrorHint(energiError) },
+                            isError = energiError,
                             textStyle = TextStyle(fontSize = 14.sp),
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(
@@ -165,12 +177,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             value = waktu,
                             onValueChange = { waktu = it },
                             label = { Text(text = stringResource(R.string.waktu)) },
-                            trailingIcon = {
-                                Text(
-                                    text = stringResource(R.string.satuan_waktu),
-                                    fontSize = 12.sp
-                                )
-                            },
+                            trailingIcon = { IconPicker(waktuError, stringResource(R.string.satuan_waktu)) },
+                            supportingText = { ErrorHint(waktuError) },
+                            isError = waktuError,
                             textStyle = TextStyle(fontSize = 14.sp),
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(
@@ -182,7 +191,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                 }
                 stringResource(R.string.hitung_energi) -> {
                     Row (
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         OutlinedTextField(
@@ -190,12 +201,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             value = daya,
                             onValueChange = { daya = it },
                             label = { Text(text = stringResource(R.string.daya)) },
-                            trailingIcon = {
-                                Text(
-                                    text = stringResource(R.string.satuan_daya),
-                                    fontSize = 12.sp
-                                )
-                            },
+                            trailingIcon = { IconPicker(dayaError, stringResource(R.string.satuan_daya)) },
+                            supportingText = { ErrorHint(dayaError) },
+                            isError = dayaError,
                             textStyle = TextStyle(fontSize = 14.sp),
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(
@@ -208,12 +216,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             value = waktu,
                             onValueChange = { waktu = it },
                             label = { Text(text = stringResource(R.string.waktu)) },
-                            trailingIcon = {
-                                Text(
-                                    text = stringResource(R.string.satuan_waktu),
-                                    fontSize = 12.sp
-                                )
-                            },
+                            trailingIcon = { IconPicker(waktuError, stringResource(R.string.satuan_waktu)) },
+                            supportingText = { ErrorHint(waktuError) },
+                            isError = waktuError,
                             textStyle = TextStyle(fontSize = 14.sp),
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(
@@ -225,7 +230,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                 }
                 stringResource(R.string.hitung_waktu) -> {
                     Row (
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ){
                         OutlinedTextField(
@@ -233,12 +240,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             value = daya,
                             onValueChange = { daya = it },
                             label = { Text(text = stringResource(R.string.daya)) },
-                            trailingIcon = {
-                                Text(
-                                    text = stringResource(R.string.satuan_daya),
-                                    fontSize = 12.sp
-                                )
-                            },
+                            trailingIcon = { IconPicker(dayaError, stringResource(R.string.satuan_daya)) },
+                            supportingText = { ErrorHint(dayaError) },
+                            isError = dayaError,
                             textStyle = TextStyle(fontSize = 14.sp),
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(
@@ -251,12 +255,9 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             value = energi,
                             onValueChange = { energi = it },
                             label = { Text(text = stringResource(R.string.energi)) },
-                            trailingIcon = {
-                                Text(
-                                    text = stringResource(R.string.satuan_energi),
-                                    fontSize = 12.sp
-                                )
-                            },
+                            trailingIcon = { IconPicker(energiError, stringResource(R.string.satuan_energi)) },
+                            supportingText = { ErrorHint(energiError) },
+                            isError = energiError,
                             textStyle = TextStyle(fontSize = 14.sp),
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(
@@ -268,14 +269,111 @@ fun ScreenContent(modifier: Modifier = Modifier){
                 }
             }
             Button(
-                onClick = {},
+                onClick = {
+                    when (selectedText) {
+                        hitungDayaText -> {
+                            energiError = (energi.isBlank() || energi == "0")
+                            waktuError = (waktu.isBlank() || waktu == "0")
+                            if (!energiError && !waktuError) {
+                                hitungDaya = rumusDaya(energi.toFloat(), waktu.toFloat())
+                                hitungEnergi = 0f
+                                hitungWaktu = 0f
+                            }
+                        }
+                        hitungEnergiText -> {
+                            dayaError = (daya.isBlank() || daya == "0")
+                            waktuError = (waktu.isBlank() || waktu == "0")
+                            if (!dayaError && !waktuError) {
+                                hitungEnergi = rumusEnergi(daya.toFloat(), waktu.toFloat())
+                                hitungDaya = 0f
+                                hitungWaktu = 0f
+                            }
+                        }
+                        hitungWaktuText -> {
+                            dayaError = (daya.isBlank() || daya == "0")
+                            energiError = (energi.isBlank() || energi == "0")
+                            if (!dayaError && !energiError) {
+                                hitungWaktu = rumusWaktu(energi.toFloat(), daya.toFloat())
+                                hitungDaya = 0f
+                                hitungEnergi = 0f
+                            }
+                        }
+                    }
+                },
                 modifier = Modifier.padding(top = 8.dp),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
             ) {
                 Text(text = stringResource(R.string.hitung))
             }
+            when (selectedText) {
+                stringResource(R.string.hitung_daya) -> {
+                    if (hitungDaya != 0f) {
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            thickness = 1.dp
+                        )
+                        Text(
+                            text = stringResource(R.string.hasil_daya, hitungDaya),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.padding(top = 15.dp)
+                        )
+                    }
+                }
+                stringResource(R.string.hitung_energi) -> {
+                    if (hitungEnergi !=0f) {
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            thickness = 1.dp
+                        )
+                        Text(
+                            text = stringResource(R.string.hasil_energi, hitungEnergi),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.padding(top = 15.dp)
+                        )
+                    }
+                }
+                stringResource(R.string.hitung_waktu) -> {
+                    if (hitungWaktu !=0f) {
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            thickness = 1.dp
+                        )
+                        Text(
+                            text = stringResource(R.string.hasil_waktu, hitungWaktu),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.padding(top = 15.dp)
+                        )
+                    }
+                }
+            }
 
         }
+    }
+}
+
+private fun rumusDaya(energi:Float, waktu:Float): Float{
+    return energi / waktu
+}
+private fun rumusEnergi(daya:Float, waktu:Float): Float{
+    return daya * waktu
+}
+private fun rumusWaktu(energi: Float, daya: Float): Float{
+    return energi / daya
+}
+
+@Composable
+fun IconPicker(isError: Boolean, unit:String) {
+    if (isError){
+        Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
+    } else {
+        Text(text = unit)
+    }
+}
+
+@Composable
+fun ErrorHint(isError: Boolean) {
+    if (isError){
+        Text(text = stringResource(R.string.input_invalid))
     }
 }
 

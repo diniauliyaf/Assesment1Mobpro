@@ -13,4 +13,8 @@
     <string name="satuan_energi">Joule</string>
     <string name="satuan_waktu">Second</string>
     <string name="hitung">Calculate</string>
+    <string name="hasil_daya">Power: %.2f Watt</string>
+    <string name="hasil_energi">Energy: %.2f Joule</string>
+    <string name="hasil_waktu">Time: %.2f Second</string>
+    <string name="input_invalid">Cannot be empty</string>
 </resources>

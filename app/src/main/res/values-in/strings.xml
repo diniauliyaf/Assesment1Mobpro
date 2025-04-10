@@ -14,4 +14,8 @@
     <string name="satuan_energi">Joule</string>
     <string name="satuan_waktu">Detik</string>
     <string name="hitung">Hitung</string>
+    <string name="hasil_daya">Daya: %.2f Watt</string>
+    <string name="hasil_energi">Energi: %.2f Joule</string>
+    <string name="hasil_waktu">Waktu: %.2f Detik</string>
+    <string name="input_invalid">Tidak boleh kosomg</string>
 </resources>

@@ -17,4 +17,15 @@
     <string name="hasil_energi">Energy: %.2f Joule</string>
     <string name="hasil_waktu">Time: %.2f Second</string>
     <string name="input_invalid">Cannot be empty</string>
+    <string name="tentang_aplikasi">About the App</string>
+    <string name="copyright">Power, energy, and wattage calculation apps
+    is an application that can help users to calculate Power, time, or energy based on simple physics formulas
+    \nThe following are the procedures for using the application, including:
+    \n1. Select the calculation needs by clicking on the dropdown and selecting one.
+    \n2. Enter 2 value inputs, such as power, energy, or time.
+    \n3. Click the calculate button and the results will appear automatically.
+    \n4. Click the share button if you want to share the calculation results with other apps.
+    \n\nThis application was created to fulfill the task of Assesment 1 class of Programing for Mobile Devices
+    \n\nCopyright © 2025 - 2026 Dini Auliya Fauziah
+    \nAll rights reserved</string>
 </resources>

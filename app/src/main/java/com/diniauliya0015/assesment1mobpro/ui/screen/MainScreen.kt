@@ -43,7 +43,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -88,7 +87,7 @@ fun MainScreen(navController: NavHostController){
                         .fillMaxWidth()
                         .padding(top = 10.dp, start = 170.dp, end = 10.dp)
                         .clip(RoundedCornerShape(20.dp))
-                        .background(Color.White)
+                        .background(MaterialTheme.colorScheme.surface)
                 ){
                     Box(
                         modifier = Modifier
@@ -98,7 +97,9 @@ fun MainScreen(navController: NavHostController){
                                 navController.navigate(Screen.About.route) }
                             .padding(15.dp)
                     ){
-                        Text(text = stringResource(R.string.tentang_aplikasi))
+                        Text(
+                            text = stringResource(R.string.tentang_aplikasi),
+                            color = MaterialTheme.colorScheme.onSurface)
                     }
                     Box(
                         modifier = Modifier

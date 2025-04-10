@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Assesment1Mobpro</string>
-    <string name="app_intro">Ever been confused about how to calculator power, energy, or time??? This application can help you calculate power, energy, or time.\nLets try it now!</string>
+    <string name="app_intro">Ever been confused about how to calculate power, energy, or time??? This application can help you calculate power, energy, or time.\nLets try it now!</string>
     <string name="gambar_awal">This is a picture of the power, energy, and time formulas</string>
     <string name="hitung_daya">Calculating Power</string>
     <string name="hitung_energi">Calculating Energy</string>
@@ -17,7 +17,7 @@
     <string name="hasil_energi">Energy: %.2f Joule</string>
     <string name="hasil_waktu">Time: %.2f Second</string>
     <string name="input_invalid">Cannot be empty</string>
-    <string name="tentang_aplikasi">About the App</string>
+    <string name="tentang_aplikasi">About Screen</string>
     <string name="copyright">Power, energy, and wattage calculation apps
     is an application that can help users to calculate Power, time, or energy based on simple physics formulas
     \nThe following are the procedures for using the application, including:

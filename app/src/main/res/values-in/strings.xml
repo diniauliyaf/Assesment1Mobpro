@@ -39,4 +39,8 @@
     \nEnergi(Joule) / Waktu(Detik)</string>
     <string name="menu_overflow">Ini menu overflow</string>
     <string name="kembali">Kembali</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="bagikan_template_daya">Input:\nEnergi: %s J\nWaktu: %s s\n\nHasil:\nDaya: %s W</string>
+    <string name="bagikan_template_energi">Input:\nDaya: %s W\nWaktu: %s s\n\nHasil:\nEnergi: %s J</string>
+    <string name="bagikan_template_waktu">Input:\nDaya: %s W\nEnergi: %s s\n\nHasil:\nWaktu: %s s</string>
 </resources>

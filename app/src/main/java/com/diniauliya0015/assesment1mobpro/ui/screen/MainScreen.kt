@@ -1,5 +1,7 @@
 package com.diniauliya0015.assesment1mobpro.ui.screen
 
+import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -43,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -65,14 +68,14 @@ fun MainScreen(navController: NavHostController){
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.app_name))
+                    Text(text = stringResource(id = R.string.app_name))
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary
                 ),
                 actions = {
-                    IconButton(onClick = {showMenu.value = true}) {
+                    IconButton(onClick = { showMenu.value = true }) {
                         Icon(
                             imageVector = Icons.Default.MoreVert,
                             contentDescription = stringResource(R.string.menu_overflow)
@@ -142,6 +145,7 @@ fun ScreenContent(modifier: Modifier = Modifier){
     val hitungDayaText = stringResource(R.string.hitung_daya)
     val hitungEnergiText = stringResource(R.string.hitung_energi)
     val hitungWaktuText = stringResource(R.string.hitung_waktu)
+    val context = LocalContext.current
 
     Column (
         modifier = modifier
@@ -369,6 +373,22 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             style = MaterialTheme.typography.titleLarge,
                             modifier = Modifier.padding(top = 15.dp)
                         )
+                        Button(
+                            onClick = {
+                                val message = context.getString(
+                                    R.string.bagikan_template_daya,
+                                    energi, waktu, hitungDaya.toString()
+                                )
+                                shareData(context, message)
+                            },
+                            modifier = Modifier.padding(top = 8.dp),
+                            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.bagikan),
+                                color = MaterialTheme.colorScheme.onPrimary
+                            )
+                        }
                     }
                 }
                 stringResource(R.string.hitung_energi) -> {
@@ -382,6 +402,22 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             style = MaterialTheme.typography.titleLarge,
                             modifier = Modifier.padding(top = 15.dp)
                         )
+                        Button(
+                            onClick = {
+                                val message = context.getString(
+                                    R.string.bagikan_template_energi,
+                                    daya, waktu, hitungEnergi.toString()
+                                )
+                                shareData(context, message)
+                            },
+                            modifier = Modifier.padding(top = 8.dp),
+                            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.bagikan),
+                                color = MaterialTheme.colorScheme.onPrimary
+                            )
+                        }
                     }
                 }
                 stringResource(R.string.hitung_waktu) -> {
@@ -395,6 +431,22 @@ fun ScreenContent(modifier: Modifier = Modifier){
                             style = MaterialTheme.typography.titleLarge,
                             modifier = Modifier.padding(top = 15.dp)
                         )
+                        Button(
+                            onClick = {
+                                val message = context.getString(
+                                    R.string.bagikan_template_waktu,
+                                    daya, energi, hitungWaktu.toString()
+                                )
+                                shareData(context, message)
+                            },
+                            modifier = Modifier.padding(top = 8.dp),
+                            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.bagikan),
+                                color = MaterialTheme.colorScheme.onPrimary
+                            )
+                        }
                     }
                 }
             }
@@ -411,6 +463,15 @@ private fun rumusEnergi(daya:Float, waktu:Float): Float{
 }
 private fun rumusWaktu(energi: Float, daya: Float): Float{
     return energi / daya
+}
+private fun shareData(context: Context, message: String) {
+    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_TEXT, message)
+    }
+    if (shareIntent.resolveActivity(context.packageManager) != null) {
+        context.startActivity(shareIntent)
+    }
 }
 
 @Composable

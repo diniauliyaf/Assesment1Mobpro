@@ -38,4 +38,8 @@
     \nEnergy(Joule) / Time(Second)</string>
     <string name="menu_overflow">This is the overflow menu</string>
     <string name="kembali">Back</string>
+    <string name="bagikan">Share</string>
+    <string name="bagikan_template_daya">Input:\Energy: %s J\nTime: %s s\n\nResult:\nPower: %s W</string>
+    <string name="bagikan_template_energi">Input:\Power: %s W\nTime: %s s\n\nResult:\nEnergy: %s J</string>
+    <string name="bagikan_template_waktu">Input:\Power: %s W\nEnergy: %s J\n\nResult:\nTime: %s s</string>
 </resources>

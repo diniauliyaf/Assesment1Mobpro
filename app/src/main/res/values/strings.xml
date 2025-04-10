@@ -36,4 +36,5 @@
     \nPower(Watt) * Time(Second)
     \n\n3. Time Formula
     \nEnergy(Joule) / Time(Second)</string>
+    <string name="menu_overflow">This is the overflow menu</string>
 </resources>

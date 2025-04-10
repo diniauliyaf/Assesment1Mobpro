@@ -37,4 +37,5 @@
     \nDaya(Watt) * Waktu(Detik)
     \n\n3. Rumus Waktu
     \nEnergi(Joule) / Waktu(Detik)</string>
+    <string name="menu_overflow">Ini menu overflow</string>
 </resources>
